@@ -55,12 +55,12 @@ class MainActivity : AppCompatActivity() {
                     .commit()
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_favorite -> {
-                val fragment = FavoriteFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
-                    .commit()
-                return@OnNavigationItemSelectedListener true
-            }
+//            R.id.navigation_favorite -> {
+//                val fragment = FavoriteFragment()
+//                supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())
+//                    .commit()
+//                return@OnNavigationItemSelectedListener true
+//            }
             R.id.navigation_basket -> {
                 val fragment = ShoppingCartFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.container, fragment, fragment.javaClass.getSimpleName())

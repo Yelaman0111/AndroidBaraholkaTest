@@ -1,28 +1,32 @@
 package com.bignerdranch.android.androidtestbaraholka.Fragmets
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.androidtestbaraholka.Adapters.ProductsAdapter
+import com.bignerdranch.android.androidtestbaraholka.MainViewModel
+import com.bignerdranch.android.androidtestbaraholka.MainViewModelFactory
 import com.bignerdranch.android.androidtestbaraholka.Model.Product
 import com.bignerdranch.android.androidtestbaraholka.R
+import com.bignerdranch.android.androidtestbaraholka.repository.Repository
 import kotlinx.android.synthetic.main.fragment_main.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainkFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
     var ProductsAdapter:ProductsAdapter? = null
+    var ProductsAdapter2:ProductsAdapter? = null
+
+    private lateinit var viewModel: MainViewModel
+
 
 class MainkFragment : Fragment() {
     // TODO: Rename and change types of parameters
@@ -49,239 +53,62 @@ class MainkFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val layoutmanager = LinearLayoutManager(context)
+        val newProductList: ArrayList<Product> = arrayListOf()
+        val nowProductList: ArrayList<Product> = arrayListOf()
 
-        products_recycler_view.layoutManager = layoutmanager
+        val layoutmanager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val layoutmanager2 = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        new_products_recycler_view.layoutManager = layoutmanager
+        now_products_recycler_view.layoutManager = layoutmanager2
 
         ProductsAdapter = ProductsAdapter(activity, mutableListOf(), R.layout.product_item)
-        products_recycler_view.adapter = ProductsAdapter
+        ProductsAdapter2 = ProductsAdapter(activity, mutableListOf(), R.layout.product_item)
 
+        new_products_recycler_view.adapter = ProductsAdapter
+        now_products_recycler_view.adapter = ProductsAdapter2
 
-        //запрос на сервер на получение списка товаров
-        getProductsFormServer()
+        getNewProduct()
+        getNowProduct()
+
+        viewModel.getNewProduct()
+        viewModel.getNewProductResponse.observe(this, Observer { response ->
+            if (response.isSuccessful) {
+                response.body()!!.forEach {
+                    newProductList?.add(it)
+                }
+                ProductsAdapter!!.addAll(newProductList as List<Product>)
+            }
+        })
+
+        viewModel.getNowProduct()
+        viewModel.getNowProductResponse.observe(this, Observer { response ->
+            if (response.isSuccessful) {
+                response.body()!!.forEach {
+                    nowProductList?.add(it)
+                }
+                ProductsAdapter2!!.addAll(nowProductList as List<Product>)
+            }
+        })
+
 
 
 
     }
 
-    private fun getProductsFormServer() {
-        val Product1: Product = Product("Apple iPhone 11 pro Max 64gb Midnight Green",R.drawable.iphone7,"499 999 тг",
-            "Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                    "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                    "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                    "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                    "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                    "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                    "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                    "\n" +
-                    "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                    "\n" +
-                    "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product2: Product = Product("Apple iPhone 10 pro Max 128gb Gray",R.drawable.iphone2,"599 999 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product3: Product = Product("Apple iPhone 12 pro Max 264gb Midnight Black",R.drawable.iphone7,"300 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product4: Product = Product("Apple iPhone 8 pro Max 64gb Red",R.drawable.iphone3,"400 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product5: Product = Product("Apple iPhone 11 pro Max 512gb Silver",R.drawable.iphone2,"250 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product6: Product = Product("Apple iPhone 8 pro Max 128gb Gold",R.drawable.iphone3,"360 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product7: Product = Product("Apple iPhone 12 pro Max 128gb Silver",R.drawable.iphone7,"280 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product8: Product = Product("Apple iPhone 10 pro Max 64gb Black",R.drawable.iphone3,"190 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product9: Product = Product("Apple iPhone 11 pro Max 512gb Gold",R.drawable.iphone2,"600 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product10: Product = Product("Apple iPhone 11 pro Max 128gb Blue",R.drawable.iphone7,"400 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-        val Product11: Product = Product("Apple iPhone 11 pro Max 128gb Gold",R.drawable.iphone3,"650 000 тг","Дисплей\n" +
-                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-                "\n" +
-                "Процессор и память\n" +
-                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-                "\n" +
-                "Камеры\n" +
-                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-                "\n" +
-                "Аккумулятор\n" +
-                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-                "\n" +
-                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-                "\n" +
-                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
+    private fun getNewProduct(){
 
-
-        val ProductList: List<Product>? = arrayListOf()
-        (ProductList as ArrayList).add(Product1)
-        ProductList?.add(Product2)
-        ProductList?.add(Product3)
-        ProductList?.add(Product4)
-        ProductList?.add(Product5)
-        ProductList?.add(Product6)
-        ProductList?.add(Product7)
-        ProductList?.add(Product8)
-        ProductList?.add(Product9)
-        ProductList?.add(Product10)
-        ProductList?.add(Product11)
-
-
-
-
-        ProductsAdapter?.addAll(ProductList)
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
     }
+
+    private fun getNowProduct(){
+
+        val repository = Repository()
+        val viewModelFactory = MainViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+    }
+
+
 }

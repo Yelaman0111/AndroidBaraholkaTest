@@ -35,7 +35,7 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="#426379"
         app:itemTextColor="#426379"
-        app:itemIconSize="20dp"
+        app:itemIconSize="@dimen/_18sdp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

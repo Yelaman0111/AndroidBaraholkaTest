@@ -24,9 +24,9 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
 {
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.name.text = Products[position].Name
-        holder.price.text = Products[position].Price
-        holder.photo.setImageResource(Products[position].Photo)
+        holder.name.text = Products[position].name
+        holder.price.text = Products[position].price
+//        holder.photo.setImageResource(Products[position].Photo)
 
         var count = 1
 
@@ -55,10 +55,10 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
 
         holder.buttonBuy.setOnClickListener{
             context!!.startActivity(Intent(context, BuyProductActivity::class.java)
-                .putExtra("Price", Products[position].Price)
-                .putExtra("Name",Products[position].Name )
-                .putExtra("Desc",Products[position].Description )
-                .putExtra("Photo", Products[position].Photo)
+                .putExtra("Price", Products[position].price)
+                .putExtra("Name",Products[position].name )
+                .putExtra("Desc",Products[position].desc )
+//                .putExtra("Photo", Products[position].Photo)
                 .putExtra("Count", count)
             )
         }

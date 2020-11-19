@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtestbaraholka.DetailsActivity
 import com.bignerdranch.android.androidtestbaraholka.Model.Product
 import com.bignerdranch.android.androidtestbaraholka.R
+import com.bignerdranch.android.androidtestbaraholka.Utils.Constants.Companion.BASE_URL_IMG
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.product_item.view.*
 
 class ProductsAdapter(private val context: FragmentActivity?, private val Products: List<Product>, private val mRowLayout: Int)
@@ -19,20 +21,27 @@ class ProductsAdapter(private val context: FragmentActivity?, private val Produc
 {
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        holder.name.text = Products[position].Name
-        holder.price.text = Products[position].Price
-        holder.photo.setImageResource(Products[position].Photo)
+        holder.name.text = Products[position].name
+        holder.price.text = Products[position].price + " тг."
+
+        val picasso = Picasso.get()
+      //  picasso.setIndicatorsEnabled(true)
+        picasso
+            .load(BASE_URL_IMG + Products[position].thumbnail.substring(11))
+            .fit()
+            .into(holder.photo)
+//        holder.photo.setImageResource(Products[position].Photo)
 
 
-
-        holder.itemView.setOnClickListener{
-            context!!.startActivity(Intent(context, DetailsActivity::class.java)
-                .putExtra("Price", Products[position].Price)
-                .putExtra("Name",Products[position].Name )
-                .putExtra("Desc",Products[position].Description )
-                .putExtra("Photo", Products[position].Photo)
-            )
-        }
+//
+//        holder.itemView.setOnClickListener{
+//            context!!.startActivity(Intent(context, DetailsActivity::class.java)
+//                .putExtra("Price", Products[position].price)
+//                .putExtra("Name",Products[position].name )
+//                .putExtra("Desc",Products[position].desc )
+////                .putExtra("Photo", Products[position].Photo)
+//            )
+//        }
     }
 
 

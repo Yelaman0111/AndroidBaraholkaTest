@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/photo_detail"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_150sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="198dp"
                 android:src="@drawable/iphone7" />
 
             <TextView
@@ -32,14 +32,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:text="Apple iPhone 11 64GB Black"
                 android:textColor="#4f578f"
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
 
                 />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/_10sdp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:text="Продавец:"
+                    android:textColor="#adadad"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/shop_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Продавец"
+                    android:textColor="#4f578f"
+                    android:textSize="@dimen/_15sdp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:text="Описание товара:"
                 android:textColor="#4f578f"
                 android:textSize="@dimen/_15sdp"
@@ -83,11 +108,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_20sdp"
+                
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:text="Товар"
+                android:lineSpacingExtra="@dimen/_10sdp"
                 android:textColor="#000"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_12sdp" />
         </LinearLayout>
 
 

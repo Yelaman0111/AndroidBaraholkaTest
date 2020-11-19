@@ -9,10 +9,10 @@
         android:icon="@drawable/ic_baseline_filter_24"
         android:title="Категории"
         />
-    <item
-    android:id="@+id/navigation_favorite"
-    android:icon="@drawable/ic_baseline_favorite_24"
-    android:title="Избранное" />
+<!--    <item-->
+<!--    android:id="@+id/navigation_favorite"-->
+<!--    android:icon="@drawable/ic_baseline_favorite_24"-->
+<!--    android:title="Избранное" />-->
     <item
         android:id="@+id/navigation_basket"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
