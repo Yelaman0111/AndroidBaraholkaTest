@@ -32,7 +32,8 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         holder.name.text = Products[position].name
-        holder.price.text = Products[position].price
+        holder.price.text = Products[position].price + " тг."
+        holder.cart_product_total_price.text =" = " + Products[position].price + " тг."
 //        holder.photo.setImageResource(Products[position].Photo)
 
         dbHandler = DatabaseHandler(context as Context)
@@ -51,8 +52,14 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
         holder.buttonAdd.setOnClickListener {
             count++
             holder.countText.text =  count.toString()
+            holder.cart_product_count.text = " * " + count.toString()
+            holder.cart_product_total_price.text = "= " + (count * Products[position].price.toInt()).toString() + " тг."
 
-            if (count > 1) holder.buttonDelete.setBackgroundResource(R.drawable.ic_baseline_remove_24)
+            if (count > 1) {
+                holder.buttonDelete.setBackgroundResource(R.drawable.ic_baseline_remove_24)
+
+            }
+
 
 
         }
@@ -72,6 +79,8 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
                 delete(position)
             }
             holder.countText.text = count.toString()
+            holder.cart_product_count.text = " * " + count.toString()
+            holder.cart_product_total_price.text = "= " + (count * Products[position].price.toInt()).toString()
         }
 
 
@@ -97,6 +106,8 @@ class ShoppingCartAdapter (private val context: FragmentActivity?, private val P
         val photo: ImageView = itemView.findViewById(R.id.cart_product_photo)
 
         val countText: TextView = itemView.findViewById(R.id.cart_count)
+        val cart_product_count: TextView = itemView.findViewById(R.id.cart_product_count)
+        val cart_product_total_price: TextView = itemView.findViewById(R.id.cart_product_total_price)
         val buttonBuy : Button = itemView.findViewById(R.id.cart_buy)
         val buttonDelete: ImageButton = itemView.findViewById(R.id.cart_delete_from)
         val buttonAdd: ImageButton = itemView.findViewById(R.id.cart_add)

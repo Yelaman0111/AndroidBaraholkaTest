@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Детали заказа"
         android:textSize="@dimen/_20sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_20sdp"
         android:textColor="#3b5195"
          />
 
@@ -28,7 +28,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="horizontal">
 
         <ImageView
@@ -78,17 +81,21 @@
             </LinearLayout>
         </LinearLayout>
 
-    </LinearLayout>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Адрес доставки:"/>
+            android:text="Город доставки:"
+            android:layout_marginRight="@dimen/_10sdp"
+            />
+
         <TextView
             android:id="@+id/order_address"
             android:layout_width="wrap_content"
@@ -100,11 +107,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Стоимость товаров"/>
+            android:text="Стоимость товаров"
+            android:layout_marginRight="@dimen/_10sdp"/>
         <TextView
             android:id="@+id/order_product_price"
             android:layout_width="wrap_content"
@@ -116,11 +127,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Стоимость доставки:"/>
+            android:text="Стоимость доставки:"
+            android:layout_marginRight="@dimen/_10sdp"/>
         <TextView
             android:id="@+id/order_delivery_price"
             android:layout_width="wrap_content"
@@ -133,11 +148,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_20sdp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ИТОГО:"/>
+            android:text="ИТОГО:"
+            android:layout_marginRight="@dimen/_10sdp"/>
         <TextView
             android:id="@+id/order_total_price"
             android:layout_width="wrap_content"
@@ -151,7 +170,7 @@
         android:layout_height="wrap_content"
         android:text="Ваши данные"
         android:textSize="@dimen/_20sdp"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_margin="@dimen/_20sdp"
         android:textColor="#3b5195"
         />
 
@@ -172,7 +191,7 @@
 
         <TextView
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#202020" />
 
@@ -203,7 +222,7 @@
 
         <TextView
             android:id="@+id/editTextTextPersonSecondName"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#202020" />
     </LinearLayout>
@@ -221,7 +240,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp"
-
+        android:layout_marginBottom="@dimen/_20sdp"
         >
 
         <TextView
@@ -238,11 +257,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#202020" />
+
     </LinearLayout>
 
 
 
-
+</LinearLayout>
 
 <!--</LinearLayout>-->
 </ScrollView>

@@ -79,6 +79,10 @@ class BuyProductActivity : AppCompatActivity() {
                 delivery_price.text.toString(), final_price.text.toString()
             ).toString())
 
+            Toast.makeText(this, "Ваш заказ оформлен", Toast.LENGTH_SHORT).show()
+
+
+
         }
 
 
@@ -150,9 +154,9 @@ class BuyProductActivity : AppCompatActivity() {
                     deleveryPrice = 700
                 }
                 //city = city_array.get
-                delivery_price.text = deleveryPrice.toString() + " тг"
+                delivery_price.text = deleveryPrice.toString() + " тг."
                 final_price.text = (total + deleveryPrice).toString().substring(0,3) + " " + (total + deleveryPrice).toString().substring(3) + " тг."
-                Toast.makeText(this@BuyProductActivity, "$view", Toast.LENGTH_LONG).show()
+//                Toast.makeText(this@BuyProductActivity, "$view", Toast.LENGTH_LONG).show()
 
                 city =  parent?.getItemAtPosition(position).toString()
             }

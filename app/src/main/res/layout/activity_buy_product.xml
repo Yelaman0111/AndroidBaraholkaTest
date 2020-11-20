@@ -16,7 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
             android:text="Проверьте детали заказа"
             android:textColor="#3b5195"
             android:textSize="@dimen/_20sdp"
@@ -26,7 +29,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
             android:orientation="horizontal">
 
             <ImageView
@@ -87,7 +93,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Стоимость товаров:"
-                android:layout_marginLeft="@dimen/_10sdp"/>
+                android:layout_marginLeft="@dimen/_30sdp"/>
 
             <TextView
                 android:id="@+id/product_in_del_price"
@@ -104,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Стоимость доставки:"
-                android:layout_marginLeft="@dimen/_10sdp"/>
+                android:layout_marginLeft="@dimen/_30sdp"/>
 
             <TextView
                 android:id="@+id/delivery_price"
@@ -122,7 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ИТОГО"
-                android:layout_marginLeft="@dimen/_10sdp"/>
+                android:layout_marginLeft="@dimen/_30sdp"/>
 
             <TextView
                 android:id="@+id/final_price"
@@ -137,7 +143,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
             android:text="Ваши данные"
             android:textColor="#3b5195"
             android:textSize="@dimen/_20sdp"
@@ -147,7 +155,7 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_30sdp"
             />
 
         <View
@@ -251,7 +259,7 @@
                 android:layout_weight="1"
                 android:background="@null"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="phone"
                 android:textColor="#202020" />
         </LinearLayout>
 

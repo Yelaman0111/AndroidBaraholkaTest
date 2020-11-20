@@ -61,19 +61,19 @@ class DetailsActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        buy_product.setOnClickListener {
+//        buy_product.setOnClickListener {
 //            val intent = Intent(this, MainActivity::class.java)
 //            intent.putExtra("Key", "1")
 //            startActivity(intent)
            //запрос на сервер
 
 
-            var productList = dbHandler!!.getAllProduct()
-
-            productList.forEach{
-                Log.i("Product", it.toString())
-            }
-        }
+//            var productList = dbHandler!!.getAllProduct()
+//
+//            productList.forEach{
+//                Log.i("Product", it.toString())
+//            }
+//        }
 
         dbHandler = DatabaseHandler(this)
 
