@@ -1,13 +1,21 @@
 package com.bignerdranch.android.androidtestbaraholka.Fragmets
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bignerdranch.android.androidtestbaraholka.Adapters.CategoriesAdapter
+import com.bignerdranch.android.androidtestbaraholka.Adapters.OrderedAdapter
+import com.bignerdranch.android.androidtestbaraholka.DB.DatabaseHandler
 import com.bignerdranch.android.androidtestbaraholka.MainActivity
+import com.bignerdranch.android.androidtestbaraholka.Model.Categories
+import com.bignerdranch.android.androidtestbaraholka.Model.OrderedProduct
 import com.bignerdranch.android.androidtestbaraholka.R
+import kotlinx.android.synthetic.main.fragment_categories.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,6 +33,7 @@ class ProfileFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    var OrderedAdapter: OrderedAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -41,21 +50,62 @@ class ProfileFragment : Fragment() {
 
     }
 
-
+    var dbHandler: DatabaseHandler? = null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
 
-        signUp.setOnClickListener {
 
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.container, SignUpFragment())
+        val layoutmanager = LinearLayoutManager(context)
+//        val categoriesList: ArrayList<OrderedProduct> = arrayListOf()
 
-                .commit()
+        ordered_recyclerview.layoutManager = layoutmanager
 
-        }
+        OrderedAdapter =
+            com.bignerdranch.android.androidtestbaraholka.Adapters.OrderedAdapter(
+                activity,
+                mutableListOf(),
+                R.layout.ordered_product_item
+            )
 
-        button_login.setOnClickListener {
-            //запрос на сервер вход пользователя
-        }
+        ordered_recyclerview.adapter = OrderedAdapter
+
+//        categoriesList.add(OrderedProduct(1,"Чайник", "12345"))
+
+        dbHandler = DatabaseHandler(context as Context)
+
+        var productList = dbHandler!!.getAllOrder()
+
+
+//        categoriesList.addAll(productList)
+
+        OrderedAdapter!!.addAll(productList)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        signUp.setOnClickListener {
+//
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.container, SignUpFragment())
+//
+//                .commit()
+//
+//        }
+//
+//        button_login.setOnClickListener {
+//            //запрос на сервер вход пользователя
+//        }
 
 
 

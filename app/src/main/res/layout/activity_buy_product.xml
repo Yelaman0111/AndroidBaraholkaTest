@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".BuyProductActivity"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context=".BuyProductActivity">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Проверьте детали заказа"
-            android:textSize="@dimen/_20sdp"
             android:layout_margin="@dimen/_10sdp"
-            android:textStyle="bold"
-            android:textColor="#003AD9" />
+            android:text="Проверьте детали заказа"
+            android:textColor="#3b5195"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold" />
 
 
         <LinearLayout
@@ -33,8 +33,8 @@
                 android:id="@+id/product_photo_buy"
                 android:layout_width="@dimen/_50sdp"
                 android:layout_height="@dimen/_50sdp"
-                android:src="@drawable/ic_launcher_background"
-                android:layout_margin="@dimen/_10sdp"/>
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/ic_launcher_background" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,33 +43,33 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/product_name_buy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/product_name_buy"
                     android:text="Apple Iphone 11 64gb Space Gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
+
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/product_price_buy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/product_price_buy"
                         android:text="399 999 тг " />
 
                     <TextView
+                        android:id="@+id/product_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/product_count"
                         android:text=" * 1 " />
 
                     <TextView
+                        android:id="@+id/product_final_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/product_final_price"
                         android:text=" = 399 999 тг" />
 
 
@@ -79,29 +79,84 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Стоимость товаров:"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/product_in_del_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Стоимость доставки:"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/delivery_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:text="..." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ИТОГО"
+                android:layout_marginLeft="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/final_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_17sdp"
+                android:textColor="#f49316"/>
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ваши данные"
-            android:textSize="@dimen/_20sdp"
             android:layout_margin="@dimen/_10sdp"
-            android:textStyle="bold"
-            android:textColor="#003AD9" />
+            android:text="Ваши данные"
+            android:textColor="#3b5195"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_20sdp"
-            android:entries="@array/City"
-            android:layout_marginLeft="@dimen/_10sdp" />
+            android:layout_marginLeft="@dimen/_10sdp"
+            />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
             android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:background="#7b7b7b" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -112,29 +167,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Имя:"
-                android:textSize="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
+                android:text="Имя:"
+                android:textColor="#808080"
+                android:textSize="@dimen/_15sdp" />
 
             <EditText
                 android:id="@+id/editTextTextPersonName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
                 android:background="@null"
-                android:inputType="textPersonName" />
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textColor="#202020" />
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
             android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:background="#7b7b7b" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -145,28 +202,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textSize="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
+                android:text="Фамилия:"
+                android:textColor="#808080"
+                android:textSize="@dimen/_15sdp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonEmail"
+                android:id="@+id/editTextTextPersonSecondName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:background="@null" />
+                android:textColor="#202020" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
             android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:background="#7b7b7b" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -179,28 +238,30 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Номер телефона:"
-                android:textSize="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
+                android:text="Номер телефона:"
+                android:textColor="#808080"
+                android:textSize="@dimen/_15sdp" />
 
             <EditText
                 android:id="@+id/editTextTextPersonPhone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:background="@null" />
+                android:textColor="#202020" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
             android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:background="#7b7b7b" />
 
 
         <LinearLayout
@@ -212,140 +273,142 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Улица / микрорайон:"
-                android:textSize="@dimen/_15sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
+                android:text="Адрес:"
+                android:textColor="#808080"
+                android:textSize="@dimen/_15sdp" />
 
             <EditText
                 android:id="@+id/editTextTextPersonStreet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@null"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:background="@null" />
+                android:textColor="#202020" />
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
             android:layout_marginLeft="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+            android:background="#7b7b7b" />
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_10sdp"
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="@dimen/_10sdp"-->
 
-            >
+        <!--            >-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Дом / строение:"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Дом / строение:"-->
+        <!--                android:textSize="@dimen/_15sdp"-->
+        <!--                android:layout_marginRight="@dimen/_20sdp"-->
+        <!--                android:layout_marginLeft="@dimen/_20sdp" />-->
 
-            <EditText
-                android:id="@+id/editTextTextPersonHomeNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:background="@null" />
-        </LinearLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/editTextTextPersonHomeNumber"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:ems="10"-->
+        <!--                android:inputType="textPersonName"-->
+        <!--                android:background="@null" />-->
+        <!--        </LinearLayout>-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
-            android:layout_marginLeft="@dimen/_6sdp"
-            android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_10sdp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Квартира / офис:"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonApartmentNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:background="@null" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
-            android:layout_marginLeft="@dimen/_6sdp"
-            android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/_1sdp"-->
+        <!--            android:background="#7b7b7b"-->
+        <!--            android:layout_marginLeft="@dimen/_6sdp"-->
+        <!--            android:layout_marginRight="@dimen/_6sdp"-->
+        <!--            android:layout_marginTop="@dimen/_5sdp" />-->
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:padding="@dimen/_10sdp">
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal"-->
+        <!--            android:padding="@dimen/_10sdp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Комментарий продавцу:"
-                android:textSize="@dimen/_15sdp"
-                android:layout_marginRight="@dimen/_20sdp" />
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Квартира / офис:"-->
+        <!--                android:textSize="@dimen/_15sdp"-->
+        <!--                android:layout_marginRight="@dimen/_20sdp"-->
+        <!--                android:layout_marginLeft="@dimen/_20sdp" />-->
 
-            <EditText
-                android:id="@+id/editTextTextPersonComment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_80sdp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:background="@null" />
-        </LinearLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/editTextTextPersonApartmentNumber"-->
+        <!--                android:layout_width="0dp"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:ems="10"-->
+        <!--                android:inputType="textPersonName"-->
+        <!--                android:background="@null" />-->
+        <!--        </LinearLayout>-->
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_1sdp"
-            android:background="#7b7b7b"
-            android:layout_marginLeft="@dimen/_6sdp"
-            android:layout_marginRight="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_5sdp" />
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/_1sdp"-->
+        <!--            android:background="#7b7b7b"-->
+        <!--            android:layout_marginLeft="@dimen/_6sdp"-->
+        <!--            android:layout_marginRight="@dimen/_6sdp"-->
+        <!--            android:layout_marginTop="@dimen/_5sdp" />-->
+
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="vertical"-->
+        <!--            android:layout_marginLeft="@dimen/_20sdp"-->
+        <!--            android:padding="@dimen/_10sdp">-->
+
+        <!--            <TextView-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:text="Комментарий продавцу:"-->
+        <!--                android:textSize="@dimen/_15sdp"-->
+        <!--                android:layout_marginRight="@dimen/_20sdp" />-->
+
+        <!--            <EditText-->
+        <!--                android:id="@+id/editTextTextPersonComment"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="@dimen/_80sdp"-->
+        <!--                android:layout_weight="1"-->
+        <!--                android:ems="10"-->
+        <!--                android:inputType="textPersonName"-->
+        <!--                android:layout_marginLeft="@dimen/_20sdp"-->
+        <!--                android:background="@null" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <View-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/_1sdp"-->
+        <!--            android:background="#7b7b7b"-->
+        <!--            android:layout_marginLeft="@dimen/_6sdp"-->
+        <!--            android:layout_marginRight="@dimen/_6sdp"-->
+        <!--            android:layout_marginTop="@dimen/_5sdp" />-->
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="#3b5195"
             android:text="Купить"
             android:textColor="#fff"
-            android:background="#003AD9"
-            android:layout_margin="@dimen/_20sdp"
-
+            android:id="@+id/buy_button"
             />
 
     </LinearLayout>

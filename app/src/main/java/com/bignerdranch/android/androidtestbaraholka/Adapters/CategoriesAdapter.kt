@@ -47,6 +47,7 @@ class CategoriesAdapter (private val context: FragmentActivity?, private val Cat
                 .putExtra("Desc",CategoriesProduct[position].desc )
                 .putExtra("Photo", CategoriesProduct[position].thumbnail?.substring(11))
                     .putExtra("Shop", CategoriesProduct[position].shop.name)
+                    .putExtra("ID", CategoriesProduct[position].id)
             )
         }
     }

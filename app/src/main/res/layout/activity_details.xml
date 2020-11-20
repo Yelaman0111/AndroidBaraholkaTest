@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/photo_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="198dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
                 android:src="@drawable/iphone7" />
 
             <TextView
@@ -108,7 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_20sdp"
-                
+
                 android:layout_marginBottom="@dimen/_30sdp"
                 android:text="Товар"
                 android:lineSpacingExtra="@dimen/_10sdp"

@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.androidtestbaraholka.DetailsActivity
+import com.bignerdranch.android.androidtestbaraholka.Model.OrderedProduct
 import com.bignerdranch.android.androidtestbaraholka.Model.Product
 import com.bignerdranch.android.androidtestbaraholka.R
 import com.bignerdranch.android.androidtestbaraholka.Utils.Constants.Companion.BASE_URL_IMG
@@ -30,7 +31,7 @@ class ProductsAdapter(private val context: FragmentActivity?, private val Produc
             .load(BASE_URL_IMG + Products[position].thumbnail.substring(11))
             .fit()
             .into(holder.photo)
-//        holder.photo.setImageResource(Products[position].Photo)
+       // holder.photo.setImageResource(Products[position].Photo)
 
 
 //

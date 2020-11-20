@@ -8,76 +8,92 @@
     tools:context=".Fragmets.ProfileFragment"
     android:orientation="vertical">
 
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="@string/titleLogin"
-       android:textSize="@dimen/_20sdp"
-       android:textColor="#3e4f90"
-       android:textStyle="bold"
-       android:layout_marginLeft="@dimen/_20sdp"
-       android:layout_marginBottom="@dimen/_20sdp"
-       android:layout_marginTop="@dimen/_50sdp"
-       />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Мои заказы"
+    android:textSize="@dimen/_20sdp"
+    android:textColor="#3b5195"
+    android:layout_margin="@dimen/_10sdp"
+    />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Пароль"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"/>
+        android:layout_height="match_parent"
+        android:id="@+id/ordered_recyclerview"
+        tools:listitem="@layout/ordered_product_item"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
->
+    <!--   <TextView-->
+<!--       android:layout_width="wrap_content"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       android:text="@string/titleLogin"-->
+<!--       android:textSize="@dimen/_20sdp"-->
+<!--       android:textColor="#3e4f90"-->
+<!--       android:textStyle="bold"-->
+<!--       android:layout_marginLeft="@dimen/_20sdp"-->
+<!--       android:layout_marginBottom="@dimen/_20sdp"-->
+<!--       android:layout_marginTop="@dimen/_50sdp"-->
+<!--       />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextTextPersonName3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:hint="Email"-->
+<!--        android:layout_marginLeft="@dimen/_20sdp"-->
+<!--        android:layout_marginRight="@dimen/_20sdp"-->
+<!--        android:layout_marginBottom="@dimen/_20sdp"-->
+<!--        />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/editTextTextPersonName4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:hint="Пароль"-->
+<!--        android:layout_marginLeft="@dimen/_20sdp"-->
+<!--        android:layout_marginRight="@dimen/_20sdp"/>-->
 
 
-        <TextView
-            android:id="@+id/signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="@dimen/_20sdp"-->
+<!--&gt;-->
 
-            android:text="@string/SignUp"
-            android:textColor="#000"/>
 
-        <TextView
-            android:id="@+id/forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+<!--        <TextView-->
+<!--            android:id="@+id/signUp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
 
-            android:textColor="#376a93"
-            android:text="@string/forgot_password"
+<!--            android:text="@string/SignUp"-->
+<!--            android:textColor="#000"/>-->
 
-            />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:id="@+id/forgot_password"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
 
-    <Button
-        android:id="@+id/button_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3f51b5"
-        android:textColor="#fff"
-        android:text="Войти"
-        android:layout_margin="@dimen/_20sdp"/>
+<!--            android:textColor="#376a93"-->
+<!--            android:text="@string/forgot_password"-->
+
+<!--            />-->
+<!--    </LinearLayout>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/button_login"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="#3f51b5"-->
+<!--        android:textColor="#fff"-->
+<!--        android:text="Войти"-->
+<!--        android:layout_margin="@dimen/_20sdp"/>-->
 
 
 </LinearLayout>

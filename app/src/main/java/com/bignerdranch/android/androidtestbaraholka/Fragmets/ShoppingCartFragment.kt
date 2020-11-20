@@ -1,6 +1,8 @@
 package com.bignerdranch.android.androidtestbaraholka.Fragmets
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.androidtestbaraholka.Adapters.ProductsAdapter
 import com.bignerdranch.android.androidtestbaraholka.Adapters.ShoppingCartAdapter
+import com.bignerdranch.android.androidtestbaraholka.DB.DatabaseHandler
 import com.bignerdranch.android.androidtestbaraholka.Model.Product
 import com.bignerdranch.android.androidtestbaraholka.R
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -47,10 +50,19 @@ class ShoppingCartFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false)
     }
 
+    var dbHandler: DatabaseHandler? = null
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
 
+        dbHandler = DatabaseHandler(context as Context)
+
+        var productList = dbHandler!!.getAllProduct()
+
+//        productList.forEach {
+//            Log.i("Product", it.toString())
+//        }
 
         val layoutmanager = LinearLayoutManager(context)
 
@@ -63,82 +75,9 @@ class ShoppingCartFragment : Fragment() {
         )
         shopping_cart_recycler.adapter = ShoppingCartAdapter
 
+        ShoppingCartAdapter!!.addAll(productList)
 
 
-            //запрос на сервер на получение списка товаров из корзины
-//        getProductsInCartFormServer()
 
     }
-
-//    private fun getProductsInCartFormServer() {
-//        val Product1: Product = Product("Apple iPhone 11 pro Max 64gb Midnight Green",R.drawable.iphone7,"499 999 тг",
-//            "Дисплей\n" +
-//                    "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-//                    "\n" +
-//                    "Процессор и память\n" +
-//                    "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-//                    "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-//                    "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-//                    "\n" +
-//                    "Камеры\n" +
-//                    "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-//                    "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-//                    "\n" +
-//                    "Аккумулятор\n" +
-//                    "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-//                    "\n" +
-//                    "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-//                    "\n" +
-//                    "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-//        val Product2: Product = Product("Apple iPhone 10 pro Max 128gb Gray",R.drawable.iphone2,"599 999 тг","Дисплей\n" +
-//                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-//                "\n" +
-//                "Процессор и память\n" +
-//                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-//                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-//                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-//                "\n" +
-//                "Камеры\n" +
-//                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-//                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-//                "\n" +
-//                "Аккумулятор\n" +
-//                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-//                "\n" +
-//                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-//                "\n" +
-//                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-//        val Product3: Product = Product("Apple iPhone 12 pro Max 264gb Midnight Black",R.drawable.iphone7,"300 000 тг","Дисплей\n" +
-//                "Все новые смартфоны Apple образца 2020 года получили OLED-экраны Super Retina XDR. У iPhone 12 он 6,1-дюймовый.\n" +
-//                "\n" +
-//                "Процессор и память\n" +
-//                "Аппаратной основой iPhone 12 стал флагманский 5-нм чипсет Apple A14 Bionic. " +
-//                "Он обеспечивает феноменальную производительность. Ждем тестов. " +
-//                "Но, судя по тому, какие результаты эта SoC демонстрировала внутри iPad Air 4, переживать по этому поводу не стоит." +
-//                "\n" +
-//                "Камеры\n" +
-//                "Основная камера у iPhone 12 двойная — используется широкоугольный и сверхширокоугольный объективы. " +
-//                "Оба 12-мегапиксельные. Присутствует оптическая стабилизация. Угол обзора — 120 градусов." +
-//                "\n" +
-//                "Аккумулятор\n" +
-//                "Емкость аккумулятора Apple традиционно не раскрыла. Но, по словам инсайдерам, в iPhone 12 стоит батарея на 2775 мА*ч. Это даже меньше, чем у iPhone 11.\n" +
-//                "\n" +
-//                "Время автономной работы – до 17 часов воспроизведения видео, 11 часов потоковой передачи, 65 часов звука.\n" +
-//                "\n" +
-//                "iPhone 12 поддерживает новую систему магнитной беспроводной зарядки Magsafe. Ее мощность составляет 15 Вт.")
-//
-//        val ProductList: List<Product>? = arrayListOf()
-//        (ProductList as ArrayList).add(Product1)
-//        ProductList?.add(Product2)
-//        ProductList?.add(Product3)
-//
-//
-//    ShoppingCartAdapter?.addAll(ProductList)
-//
-//
-//
-//
-//
-//
-//    }
 }
